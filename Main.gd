@@ -28,6 +28,8 @@ func _on_MobTimer_timeout():
 ### Private
 
 func new_game():
+	$Music.play()
+
 	update_score(0)
 
 	$HUD.show_message("Get Ready")
@@ -36,6 +38,9 @@ func new_game():
 	$StartTimer.start()
 
 func game_over():
+	$Music.stop()
+	$DeathSound.play()
+
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 
