@@ -25,6 +25,7 @@ func _on_MobTimer_timeout():
 	add_child(create_mob())
 
 func _on_Player_hit(new_health):
+	$HurtSound.play()
 	$HUD.update_health(new_health)
 
 
