@@ -1,17 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/HUD/HUD.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/healthBar.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=4]
 
 [sub_resource type="InputEventAction" id=2]
 action = "ui_select"
 
 [sub_resource type="ShortCut" id=3]
 shortcut = SubResource( 2 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 168, 28 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 28, 168, 28 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -49,6 +62,7 @@ margin_left = -90.0
 margin_top = -200.0
 margin_right = 90.0
 margin_bottom = -100.0
+theme = SubResource( 4 )
 custom_fonts/font = SubResource( 1 )
 shortcut = SubResource( 3 )
 text = "Start"
@@ -59,6 +73,19 @@ __meta__ = {
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 168.0
+margin_bottom = 28.0
+rect_scale = Vector2( 0.75, 1 )
+value = 50.0
+texture_over = SubResource( 5 )
+texture_progress = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
