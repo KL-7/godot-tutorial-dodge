@@ -14,7 +14,7 @@ func show_game_over():
 	show_message("Game Over")
 	yield($MessageTimer, "timeout")
 
-	$Message.text = "Dodge the\nCreeps!"
+	$Message.text = "Dodge the monsters!"
 	$Message.show()
 
 	yield(get_tree().create_timer(1), "timeout")
@@ -22,6 +22,12 @@ func show_game_over():
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
+
+func update_max_health(max_health):
+	$HealthBar.max_value = max_health
+
+func update_health(health):
+	$HealthBar.value = health
 
 
 ### Signals

@@ -1,15 +1,21 @@
 extends Area2D
 
-signal hit
+signal hit(new_health)
+signal death
 
 export var speed = 400
+export var max_health = 100
+
 var screen_size
+var health = max_health
 
 
 ### Public
 
 func start(pos):
 	position = pos
+	health = max_health
+
 	show()
 	$CollisionShape2D.disabled = false
 
@@ -29,10 +35,15 @@ func _process(delta):
 
 ### Signals
 
-func _on_Player_body_entered(_body):
-	hide()
-	emit_signal("hit")
-	$CollisionShape2D.set_deferred("disabled", true)
+func _on_Player_body_entered(body):
+	health = max(health - body.damage, 0)
+
+	emit_signal("hit", health)
+
+	if health == 0:
+		emit_signal("death")
+		hide()
+		$CollisionShape2D.set_deferred("disabled", true)
 
 
 ### Private

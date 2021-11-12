@@ -24,17 +24,22 @@ func _on_ScoreTimer_timeout():
 func _on_MobTimer_timeout():
 	add_child(create_mob())
 
+func _on_Player_hit(new_health):
+	$HUD.update_health(new_health)
+
 
 ### Private
 
 func new_game():
 	$Music.play()
 
+	$Player.start($StartPosition.position)
+
 	update_score(0)
+	$HUD.update_max_health($Player.max_health)
+	$HUD.update_health($Player.health)
 
 	$HUD.show_message("Get Ready")
-
-	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
 func game_over():

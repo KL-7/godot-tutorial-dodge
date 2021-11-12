@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/HUD/HUD.gd" type="Script" id=2]
@@ -9,6 +9,10 @@ size = 64
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=7]
+size = 47
+font_data = ExtResource( 1 )
 
 [sub_resource type="InputEventAction" id=2]
 action = "ui_select"
@@ -46,7 +50,7 @@ anchor_bottom = 0.5
 margin_top = -79.5
 margin_bottom = 79.5
 custom_fonts/font = SubResource( 1 )
-text = "Dodge the Creeps!"
+text = "Dodge the montsters!"
 align = 1
 autowrap = true
 __meta__ = {
@@ -63,7 +67,7 @@ margin_top = -200.0
 margin_right = 90.0
 margin_bottom = -100.0
 theme = SubResource( 4 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 7 )
 shortcut = SubResource( 3 )
 text = "Start"
 __meta__ = {
@@ -74,13 +78,13 @@ __meta__ = {
 wait_time = 2.0
 one_shot = true
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
+[node name="HealthBar" type="TextureProgress" parent="."]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 168.0
 margin_bottom = 28.0
 rect_scale = Vector2( 0.75, 1 )
-value = 50.0
+value = 100.0
 texture_over = SubResource( 5 )
 texture_progress = SubResource( 6 )
 __meta__ = {

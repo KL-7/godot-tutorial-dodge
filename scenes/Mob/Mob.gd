@@ -2,14 +2,18 @@ extends RigidBody2D
 
 export var min_speed = 150
 export var max_speed = 250
+export var damage_increment = 10
 
 onready var mob_types = $AnimatedSprite.frames.get_animation_names()
 
+var damage
 
 ### Callbacks
 
 func _ready():
-	$AnimatedSprite.animation = mob_types[randi() % mob_types.size()]
+	var type = randi() % mob_types.size()
+	$AnimatedSprite.animation = mob_types[type]
+	damage = (type + 1) * damage_increment
 
 
 ### Signals
