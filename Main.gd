@@ -19,7 +19,7 @@ func _on_StartTimer_timeout():
 	$ScoreTimer.start()
 
 func _on_ScoreTimer_timeout():
-	score += 1
+	update_score(score + 1)
 
 func _on_MobTimer_timeout():
 	add_child(create_mob())
@@ -28,13 +28,24 @@ func _on_MobTimer_timeout():
 ### Private
 
 func new_game():
-	score = 0
+	update_score(0)
+
+	$HUD.show_message("Get Ready")
+
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+
+	get_tree().call_group("mobs", "queue_free")
+
+	$HUD.show_game_over()
+
+func update_score(new_score):
+	score = new_score
+	$HUD.update_score(new_score)
 
 func create_mob():
 	var position = update_mod_spawn_position()
