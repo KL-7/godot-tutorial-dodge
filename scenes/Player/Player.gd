@@ -65,14 +65,15 @@ func update_position(velocity, delta):
 
 func update_animation(velocity):
 	if velocity.length() > 0:
-		$AnimatedSprite.play()
+		$AnimationPlayer.play()
 	else:
-		$AnimatedSprite.stop()
+		$AnimationPlayer.stop()
 
-	if velocity.x != 0:
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_v = false
-		$AnimatedSprite.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite.animation = "up"
-		$AnimatedSprite.flip_v = velocity.y > 0
+	if velocity.x > 0:
+		$AnimationPlayer.current_animation = "move_right"
+	elif velocity.x < 0:
+		$AnimationPlayer.current_animation = "move_left"
+	elif velocity.y > 0:
+		$AnimationPlayer.current_animation = "move_down"
+	elif velocity.y < 0:
+		$AnimationPlayer.current_animation = "move_up"
