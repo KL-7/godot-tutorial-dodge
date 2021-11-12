@@ -48,6 +48,7 @@ curve = SubResource( 1 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -16.0
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
