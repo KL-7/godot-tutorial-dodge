@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/HUD/HUD.gd" type="Script" id=2]
@@ -20,12 +20,17 @@ action = "ui_select"
 [sub_resource type="ShortCut" id=3]
 shortcut = SubResource( 2 )
 
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 56, 168, 28 )
+
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 168, 28 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 28, 168, 28 )
@@ -84,9 +89,9 @@ margin_top = 16.0
 margin_right = 168.0
 margin_bottom = 28.0
 rect_scale = Vector2( 0.75, 1 )
-value = 100.0
+texture_under = SubResource( 6 )
 texture_over = SubResource( 5 )
-texture_progress = SubResource( 6 )
+texture_progress = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
