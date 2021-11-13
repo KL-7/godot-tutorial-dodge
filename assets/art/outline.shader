@@ -1,7 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
-
-[sub_resource type="Shader" id=30]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform vec4 line_color : hint_color = vec4(1);
 uniform float line_thickness : hint_range(0, 10) = 1.0;
@@ -21,9 +18,4 @@ void fragment() {
 
     vec4 color = texture(TEXTURE, UV);
     COLOR = mix(color, line_color, outline - color.a);
-}"
-
-[resource]
-shader = SubResource( 30 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 4.0
+}

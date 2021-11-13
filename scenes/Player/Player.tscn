@@ -1,12 +1,17 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://assets/art/white_outline_shader.tres" type="Material" id=1]
+[ext_resource path="res://assets/art/outline.shader" type="Shader" id=1]
 [ext_resource path="res://scenes/Player/Player.gd" type="Script" id=4]
 [ext_resource path="res://assets/art/playerGrey_move.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 30.0
 height = 14.0
+
+[sub_resource type="ShaderMaterial" id=30]
+shader = ExtResource( 1 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 4.0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -400,7 +405,7 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = ExtResource( 1 )
+material = SubResource( 30 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
 hframes = 4
