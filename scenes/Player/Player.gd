@@ -24,6 +24,7 @@ func start(pos):
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	$AnimationTree.active = true
 	hide()
 
 func _process(delta):
