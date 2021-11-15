@@ -67,7 +67,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=39]
 resource_name = "attack_down"
 length = 0.3
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -123,7 +122,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=31]
 resource_name = "attack_up"
 length = 0.3
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")

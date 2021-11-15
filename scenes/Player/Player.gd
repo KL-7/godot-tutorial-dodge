@@ -36,7 +36,6 @@ func _ready():
 	hide()
 
 func _process(delta):
-	print_debug($Sprite.position)
 	match state:
 		MOVE:
 			process_move(delta)
