@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/art/outline.shader" type="Shader" id=1]
+[ext_resource path="res://assets/art/playerGrey_sheet.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Player/Player.gd" type="Script" id=4]
-[ext_resource path="res://assets/art/playerGrey_move.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 30.0
@@ -11,7 +11,7 @@ height = 14.0
 [sub_resource type="ShaderMaterial" id=30]
 shader = ExtResource( 1 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 4.0
+shader_param/line_thickness = 3.0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -51,6 +51,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "idle_down"
@@ -79,6 +91,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 13 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -121,6 +145,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
 
 [sub_resource type="Animation" id=17]
 resource_name = "idle_right"
@@ -162,6 +198,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "idle_up"
@@ -191,6 +239,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "move_down"
@@ -219,6 +279,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 13 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -261,6 +333,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "move_right"
@@ -302,6 +386,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "move_up"
@@ -330,6 +426,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -13 ) ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=18]
@@ -406,12 +514,13 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 30 )
+position = Vector2( 0, -13 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 6 )
-hframes = 4
+texture = ExtResource( 2 )
+hframes = 8
 frame = 2
 region_enabled = true
-region_rect = Rect2( 0, -4, 548, 145 )
+region_rect = Rect2( 0, 0, 1152, 208 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
@@ -429,6 +538,6 @@ tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 9 )
 parameters/idle/blend_position = Vector2( 1, 0 )
-parameters/move/blend_position = Vector2( 0, 0 )
+parameters/move/blend_position = Vector2( 0.406145, 0.108223 )
 
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
