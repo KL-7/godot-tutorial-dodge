@@ -6,8 +6,14 @@ signal death
 export var speed = 400
 export var max_health = 100
 
+enum {
+	MOVE,
+	ATTACK
+}
+
 var screen_size
 var health = max_health
+var state = MOVE
 
 
 ### Public
@@ -19,6 +25,8 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
+func attack_finish():
+	state = MOVE
 
 ### Callbacks
 
@@ -28,10 +36,12 @@ func _ready():
 	hide()
 
 func _process(delta):
-	var input_vector = calc_input_vector()
-
-	update_position(input_vector, delta)
-	update_animation(input_vector)
+	print_debug($Sprite.position)
+	match state:
+		MOVE:
+			process_move(delta)
+		ATTACK:
+			process_attack()
 
 
 ### Signals
@@ -48,6 +58,18 @@ func _on_Player_body_entered(body):
 
 
 ### Private
+
+func process_move(delta):
+	var input_vector = calc_input_vector()
+
+	update_position(input_vector, delta)
+	update_animation(input_vector)
+
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK
+
+func process_attack():
+	$AnimationTree.get("parameters/playback").travel("attack")
 
 func calc_input_vector():
 	var input_vector = Vector2()
@@ -68,6 +90,7 @@ func update_animation(input_vector):
 	if input_vector.length() > 0:
 		$AnimationTree.set("parameters/idle/blend_position", input_vector)
 		$AnimationTree.set("parameters/move/blend_position", input_vector)
+		$AnimationTree.set("parameters/attack/blend_position", input_vector)
 		$AnimationTree.get("parameters/playback").travel("move")
 	else:
 		$AnimationTree.get("parameters/playback").travel("idle")
