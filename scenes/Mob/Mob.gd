@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal death
+
 export var min_speed = 150
 export var max_speed = 250
 export var damage_increment = 10
@@ -23,4 +25,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Hurtbox_area_entered(_area):
+	emit_signal("death")
 	queue_free()

@@ -28,6 +28,8 @@ func _on_Player_hit(new_health):
 	$HurtSound.play()
 	$HUD.update_health(new_health)
 
+func _on_Mob_death():
+	update_score(score + 10)
 
 ### Private
 
@@ -66,6 +68,8 @@ func create_mob():
 	mob.position = position
 	mob.rotation = direction
 	mob.linear_velocity = random_mod_velocity(direction, mob.min_speed, mob.max_speed)
+
+	mob.connect("death", self, "_on_Mob_death")
 
 	return mob
 
