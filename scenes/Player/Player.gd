@@ -46,8 +46,8 @@ func _process(delta: float) -> void:
 
 ### Signals
 
-func _on_Player_body_entered(body: Node) -> void:
-	health = max(health - body.damage, 0)
+func _on_Player_body_entered(body: Mob) -> void:
+	health = int(max(health - body.damage, 0))
 
 	emit_signal("hit", health)
 

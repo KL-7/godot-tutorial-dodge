@@ -742,7 +742,7 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id=8]
 states/attack/node = SubResource( 36 )
-states/attack/position = Vector2( 367.156, 138.315 )
+states/attack/position = Vector2( 366.742, 137.815 )
 states/idle/node = SubResource( 22 )
 states/idle/position = Vector2( 366.328, 55.2031 )
 states/move/node = SubResource( 27 )
