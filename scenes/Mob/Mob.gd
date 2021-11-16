@@ -1,14 +1,15 @@
 extends RigidBody2D
+class_name Mob
 
 signal death
 
-export var min_speed = 150
-export var max_speed = 250
-export var damage_increment = 10
+export var min_speed: float = 150
+export var max_speed: float = 250
+export var damage_increment: int = 10
 
-onready var mob_types = $AnimatedSprite.frames.get_animation_names()
+onready var mob_types: PoolStringArray = $AnimatedSprite.frames.get_animation_names()
 
-var damage
+var damage: int
 
 ### Callbacks
 

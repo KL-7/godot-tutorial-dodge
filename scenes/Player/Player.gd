@@ -1,41 +1,42 @@
 extends Area2D
+class_name Player
 
 signal hit(new_health)
 signal death
 
-export var speed = 400
-export var max_health = 100
+export var speed: float = 400
+export var max_health: int = 100
 
 enum {
 	MOVE,
 	ATTACK
 }
 
-var screen_size
-var health = max_health
+var screen_size: Vector2
+var health: int = max_health
 var state = MOVE
 
 
 ### Public
 
-func start(pos):
+func start(pos: Vector2) -> void:
 	position = pos
 	health = max_health
 
 	show()
 	$CollisionShape2D.disabled = false
 
-func attack_finish():
+func attack_finish() -> void:
 	state = MOVE
 
 ### Callbacks
 
-func _ready():
+func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$AnimationTree.active = true
 	hide()
 
-func _process(delta):
+func _process(delta: float) -> void:
 	match state:
 		MOVE:
 			process_move(delta)
@@ -45,7 +46,7 @@ func _process(delta):
 
 ### Signals
 
-func _on_Player_body_entered(body):
+func _on_Player_body_entered(body: Node) -> void:
 	health = max(health - body.damage, 0)
 
 	emit_signal("hit", health)
@@ -58,7 +59,7 @@ func _on_Player_body_entered(body):
 
 ### Private
 
-func process_move(delta):
+func process_move(delta: float) -> void:
 	var input_vector = calc_input_vector()
 
 	update_position(input_vector, delta)
@@ -67,10 +68,10 @@ func process_move(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 
-func process_attack():
+func process_attack() -> void:
 	$AnimationTree.get("parameters/playback").travel("attack")
 
-func calc_input_vector():
+func calc_input_vector() -> Vector2:
 	var input_vector = Vector2()
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -80,12 +81,12 @@ func calc_input_vector():
 
 	return input_vector
 
-func update_position(input_vector, delta):
+func update_position(input_vector: Vector2, delta: float) -> void:
 	position += input_vector * speed * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-func update_animation(input_vector):
+func update_animation(input_vector: Vector2) -> void:
 	if input_vector.length() > 0:
 		$AnimationTree.set("parameters/idle/blend_position", input_vector)
 		$AnimationTree.set("parameters/move/blend_position", input_vector)

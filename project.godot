@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "CanvasLayer",
+"class": "HUD",
+"language": "GDScript",
+"path": "res://scenes/HUD/HUD.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Mob",
+"language": "GDScript",
+"path": "res://scenes/Mob/Mob.gd"
+}, {
+"base": "Area2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/Player/Player.gd"
+} ]
+_global_script_class_icons={
+"HUD": "",
+"Mob": "",
+"Player": ""
+}
+
 [application]
 
 config/name="tutorial-dodge"
