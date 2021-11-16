@@ -20,3 +20,7 @@ func _ready():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
+func _on_Hurtbox_area_entered(_area):
+	queue_free()

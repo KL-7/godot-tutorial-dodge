@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Mob/Mob.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/enemyWalking_1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/art/enemySwimming_2.png" type="Texture" id=5]
 [ext_resource path="res://assets/art/enemyFlyingAlt_1.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/enemyWalking_2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/Hitboxes/Hurtbox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 36.0
@@ -30,8 +31,13 @@ animations = [ {
 "speed": 3.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 35.0
+height = 26.0
+
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
-collision_mask = 0
+collision_layer = 0
+collision_mask = 4
 gravity_scale = 0.0
 script = ExtResource( 1 )
 __meta__ = {
@@ -51,4 +57,15 @@ frames = SubResource( 1 )
 animation = "walk"
 playing = true
 
+[node name="Hurtbox" parent="." instance=ExtResource( 8 )]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+rotation = 1.5708
+shape = SubResource( 3 )
+
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
