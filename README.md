@@ -3,6 +3,6 @@ Based on the [official step-by-step Godot tutorial](https://docs.godotengine.org
 Result is hosted at [kl-7.itch.io/godot-dodge-tutorial](https://kl-7.itch.io/godot-dodge-tutorial).
 
 TODOs:
-* Refactors: Stats node, setget, move damage into Hitbox node
+* Refactors: setget, move damage into Hitbox node
 * Side attacks
 * Animations: player hurt, monster death

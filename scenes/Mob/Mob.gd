@@ -7,9 +7,10 @@ export var min_speed: float = 150
 export var max_speed: float = 250
 export var damage_increment: int = 10
 
+var damage: int
+
 onready var mob_types: PoolStringArray = $AnimatedSprite.frames.get_animation_names()
 
-var damage: int
 
 ### Callbacks
 

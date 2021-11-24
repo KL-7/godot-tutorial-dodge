@@ -24,7 +24,7 @@ func _on_ScoreTimer_timeout() -> void:
 func _on_MobTimer_timeout() -> void:
 	add_child(create_mob())
 
-func _on_Player_hit(new_health: int) -> void:
+func _on_Player_health_changed(new_health: int) -> void:
 	$HurtSound.play()
 	$HUD.update_health(new_health)
 
@@ -39,8 +39,8 @@ func new_game() -> void:
 	$Player.start($StartPosition.position)
 
 	update_score(0)
-	$HUD.update_max_health($Player.max_health)
-	$HUD.update_health($Player.health)
+	$HUD.update_max_health($Player.stats.max_health)
+	$HUD.update_health($Player.stats.health)
 
 	$HUD.show_message("Get Ready")
 	$StartTimer.start()

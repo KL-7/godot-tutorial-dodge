@@ -1,11 +1,7 @@
 extends Area2D
 class_name Player
 
-signal hit(new_health)
-signal death
-
 export var speed: float = 400
-export var max_health: int = 100
 
 enum {
 	MOVE,
@@ -13,15 +9,15 @@ enum {
 }
 
 var screen_size: Vector2
-var health: int = max_health
 var state = MOVE
+
+onready var stats: Stats = $Stats
 
 
 ### Public
 
 func start(pos: Vector2) -> void:
 	position = pos
-	health = max_health
 
 	show()
 	$CollisionShape2D.disabled = false
@@ -47,14 +43,11 @@ func _process(delta: float) -> void:
 ### Signals
 
 func _on_Player_body_entered(body: Mob) -> void:
-	health = int(max(health - body.damage, 0))
+	stats.take_damage(body.damage)
 
-	emit_signal("hit", health)
-
-	if health == 0:
-		emit_signal("death")
-		hide()
-		$CollisionShape2D.set_deferred("disabled", true)
+func _on_Stats_zero_health():
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
 
 
 ### Private
